@@ -27,6 +27,11 @@ data "vsphere_network" "network" {
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
+data "vsphere_virtual_machine" "template" {
+  name          = "BuildServer"
+  datacenter_id = data.vsphere_datacenter.dc.id
+}
+
 #data "vsphere_virtual_machine" "template" {
 #  name          = "Win2K19-Basic-Template"
 #  datacenter_id = data.vsphere_datacenter.dc.id
@@ -37,20 +42,20 @@ data "vsphere_network" "network" {
 #  datacenter_id = data.vsphere_datacenter.dc.id
 #}
 
-#data "vsphere_ovf_vm_template" "ovf" {
-#  name             = "testOVF"
-#  resource_pool_id = data.vsphere_resource_pool.pool.id
-#  datastore_id     = data.vsphere_datastore.datastore.id
+data "vsphere_ovf_vm_template" "ovf" {
+  name             = "testOVF"
+  resource_pool_id = data.vsphere_resource_pool.pool.id
+  datastore_id     = data.vsphere_datastore.datastore.id
 
-#  vsphere_ovf_vm_template = "BuildServer"
+  vsphere_ovf_vm_template = "BuildServer"
 
-#  host_system_id   = data.vsphere_host.hs.id
+  host_system_id   = data.vsphere_host.hs.id
   #remote_ovf_url   = "https://download3.vmware.com/software/vmw-tools/nested-esxi/Nested_ESXi7.0_Appliance_Template_v1.ova"
 
   #ovf_network_map = {
   #  "Network 1": data.vsphere_network.net.id
   #}
-#}
+}
 
 resource "vsphere_virtual_machine" "vm" {
   name             = "terraform-test"
