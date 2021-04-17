@@ -1,5 +1,4 @@
 #https://registry.terraform.io/providers/hashicorp/vsphere/latest/docs
-
 provider "vsphere" {
   user           = "administrator@vsphere.local"
   password       = "var.vsphere_password"
