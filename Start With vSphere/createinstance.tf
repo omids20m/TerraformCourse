@@ -9,11 +9,11 @@ provider "vsphere" {
 }
 
 data "vsphere_datacenter" "dc" {
-  name = "dc1"
+  name = "DC01"
 }
 
 data "vsphere_datastore" "datastore" {
-  name          = "datastore1"
+  name          = "HDD-DS02"
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
