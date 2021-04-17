@@ -68,6 +68,19 @@ resource "vsphere_virtual_machine" "vm" {
 
   clone {
     template_uuid = data.vsphere_virtual_machine.template.id
+    customize {
+      windows_options {
+        computer_name = "Build20"
+        workgroup = "WORKGROUP"
+        admin_password = "123456"
+      }
+      network_interface {
+        ipv4_address = "172.16.18.20"
+        ipv4_netmask = 24
+      }
+
+      ipv4_gateway = "172.16.18.1"
+    }
   }
 
   network_interface {
