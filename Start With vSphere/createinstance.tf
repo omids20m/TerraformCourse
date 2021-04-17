@@ -63,7 +63,7 @@ resource "vsphere_virtual_machine" "vm" {
   datastore_id     = data.vsphere_datastore.datastore.id
 
   num_cpus = 2
-  memory   = 4098
+  memory   = 4096
   guest_id = "windows9Server64Guest"
 
   clone {
